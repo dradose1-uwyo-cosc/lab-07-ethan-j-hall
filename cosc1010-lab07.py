@@ -90,3 +90,43 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
+def is_positive_integer(value):
+    if value.isdigit() and int(value) > 0:
+        return True
+    return False
+
+def calculate(expression):
+    operators = {
+        '+': lambda x, y: x + y,
+        '-': lambda x, y: x - y,
+        '*': lambda x, y: x * y,
+        '/': lambda x, y: x / y if y != 0 else 'undefined',
+        '%': lambda x, y: x % y
+    }
+
+    for operator in operators.keys():
+        if operator in expression:
+            operand1, operand2 = map(str.strip, expression.split(operator, 1))
+            break
+    else:
+        return "Invalid operation"
+
+    while not is_positive_integer(operand1) or not is_positive_integer(operand2):
+        return "Invalid input. Please enter positive integers."
+
+    operand1 = int(operand1)
+    operand2 = int(operand2)
+
+    return operators[operator](operand1, operand2)
+
+def main():
+    while True:
+        user_input = input("Enter your calculation (or type 'exit' to quit): ")
+        if user_input.lower() == 'exit':
+            print("Exiting the calculator.")
+            break
+        result = calculate(user_input)
+        print(f"Result: {result}")
+
+if __name__ == "__main__":
+    main()
