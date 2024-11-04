@@ -1,7 +1,7 @@
-# Your Name Here
+# Ethan Hall
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
+# 10.28.2024
+# Lab 07
 # Lab Section: 
 # Sources, people worked with, help given to: 
 # your
@@ -18,8 +18,23 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+userInput = True 
+upperBound = 0
 
-print(f"The result of the factorial based on the given bound is {factorial}")
+while(True):
+    upperBound = input("Upper bound: ") 
+    userInput = upperBound.isdigit()
+    if (userInput):
+        userInput = True
+        break
+    else:
+        print("This is an invalid number. Please choose a positive integer.")
+    break 
+
+for i in range(1, int(upperBound) + 1):
+            factorial *= i
+
+print(f"The result of the factorial based on the bound {upperBound} is {factorial}")
 
 print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
@@ -28,18 +43,34 @@ print("*"*75)
 # Your program should accept both positive and negative input
 # Remember all inputs from stdin are strings, so you will need to convert the string to an int first
 # Before you convert the number you need to check to ensure that it is a numeric string
-    # To do so you can use the methods `.isdigit()` or `.isnumeric()`
-    # This will return true if every digit in your string is a numerical character
-    # However, that means a string such as `-1` would return false, even though your program should accept negative values
-    # This means you will need to have a check to see if `-` is first character of the string before you check if it is numerical
-    # If it is in the string you will need to remove the `-` character, and know that it will be a negative number, so a subtraction from the overall sum
-    # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
+# To do so you can use the methods `.isdigit()` or `.isnumeric()`
+# This will return true if every digit in your string is a numerical character
+# However, that means a string such as `-1` would return false, even though your program should accept negative values
+# This means you will need to have a check to see if `-` is first character of the string before you check if it is numerical
+# If it is in the string you will need to remove the `-` character, and know that it will be a negative number, so a subtraction from the overall sum
+# I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
+num_sum = 0
 
-num_sum = 0 
-
+while (True):
+    userInput = input("Enter integers to sum or type 'exit' to leave: ")
+    if userInput.isdigit(): 
+        num_sum += int(userInput)
+        
+        break
+    elif userInput[0] == "-" and userInput[1:] .isdigit(): 
+        num_sum -= int(userInput[1:])
+        break
+    elif userInput == 'exit':
+        break 
+    else:
+        print("error. invalid input.")
+        
+    
+        
 print(f"Your final sum is {num_sum}")
+
 
 print("*"*75)
 # Now you will be creating a two operand calculator
@@ -59,4 +90,3 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
